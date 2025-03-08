@@ -62,6 +62,40 @@ async def delete_spam(message: Message):
     await message.delete()
     await message.reply("⚠️ External advertising links are not allowed!")
 
+# ✅ **Keyword Auto-Response**
+KEYWORD_RESPONSES = {
+    # 🔹 Basic Interaction
+    "hello": "👋 Hi there! How can I assist you?",
+    "hi": "👋 Hello! Welcome to PiCoin community!",
+    "hey": "Hey! How's it going? 😊",
+    "thank you": "You're welcome! 🙌",
+    "thanks": "Happy to help! 🚀",
+    "who are you": "🤖 I am the official PiCoin bot, here to assist you!",
+    "what can you do": "💡 I can provide PiCoin price updates, help with trading info, and more!",
+
+    # 🔹 PiCoin Related
+    "price": "💰 Type /price to check the latest PiCoin price.",
+    "buy picoin": f"🚀 You can buy PiCoin on PancakeSwap: https://pancakeswap.finance/?outputCurrency={BSC_CONTRACT}",
+    "where to buy picoin": f"🔗 Buy PiCoin here: https://pancakeswap.finance/?outputCurrency={BSC_CONTRACT}",
+    "sell picoin": "📉 Check the latest market trends before selling. Use /price to check the price.",
+    "contract address": f"🔗 PiCoin Smart Contract: {BSC_CONTRACT}",
+    "picoin contract": f"📜 Contract Address: {BSC_CONTRACT}",
+
+    # 🔹 Help & Support
+    "help": "❓ Need help? You can ask about price, trading, or general PiCoin info.",
+    "support": "📩 For support, check official channels.",
+    "commands": "📜 Available commands:\n- /price: Check PiCoin price\n- /help: Get help\n- /start: Restart bot",
+    "features": "🚀 Features:\n- Auto price updates\n- Anti-spam protection\n- Buy & sell guidance",
+}
+
+@dp.message(F.text)
+async def keyword_reply(message: Message):
+    text = message.text.lower()
+    for keyword, response in KEYWORD_RESPONSES.items():
+        if keyword in text:
+            await message.reply(response)
+            break  # Stop after the first match
+
 # ✅ Keep bot alive to prevent Railway from sleeping
 async def keep_bot_alive():
     while True:
