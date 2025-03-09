@@ -46,7 +46,7 @@ async def welcome_new_member(message: Message):
             f"👋 Welcome {new_member.full_name} to the PiCoin Global Community! 🚀\n\n"
             f"🔗 Official Website: https://www.picoin.io\n"
             f"📢 Official Announcements: https://x.com/Picoin_io\n"
-            f"💰 Trade PiCoin:https://pancakeswap.finance/?outputCurrency=0xf0531343BEEf35366a4F08DCda8383d2f980EDCb\n\n"
+            f"💰 Trade PiCoin: https://pancakeswap.finance/?outputCurrency={BSC_CONTRACT}\n\n"
             f"💡 Type /price to check the latest price!"
         )
 
@@ -75,13 +75,11 @@ KEYWORD_RESPONSES = {
 
     # 🔹 PiCoin Related
     "price": "💰 Type /price to check the latest PiCoin price.",
-    "buy picoin": f"🚀 You can buy PiCoin on PancakeSwap: https://pancakeswap.finance/?outputCurrency=0xf0531343BEEf35366a4F08DCda8383d2f980EDCb",
-    "where to buy picoin": f"🔗 Buy PiCoin here: https://pancakeswap.finance/?outputCurrency=0xf0531343BEEf35366a4F08DCda8383d2f980EDCb",
+    "buy picoin": f"🚀 You can buy PiCoin on PancakeSwap: https://pancakeswap.finance/?outputCurrency={BSC_CONTRACT}",
+    "where to buy picoin": f"🔗 Buy PiCoin here: https://pancakeswap.finance/?outputCurrency={BSC_CONTRACT}",
     "sell picoin": "📉 Check the latest market trends before selling. Use /price to check the price.",
-    "contract address": f"🔗 PiCoin Smart Contract: 0xf0531343BEEf35366a4F08DCda8383d2f980EDCb
-",
-    "picoin contract": f"📜 Contract Address: 0xf0531343BEEf35366a4F08DCda8383d2f980EDCb
-",
+    "contract address": f"🔗 PiCoin Smart Contract: {BSC_CONTRACT}",
+    "picoin contract": f"📜 Contract Address: {BSC_CONTRACT}",
 
     # 🔹 Help & Support
     "help": "❓ Need help? You can ask about price, trading, or general PiCoin info.",
@@ -115,7 +113,7 @@ async def main():
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
-# ✅ Fix Windows `asyncio` issue
+# ✅ Fix Windows asyncio issue
 if __name__ == "__main__":
     import sys
     if sys.platform.startswith("win"):
