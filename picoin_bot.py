@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 API_TOKEN = os.getenv("API_TOKEN")
 COINGECKO_API_KEY = os.getenv("COINGECKO_API_KEY")
 CHAT_ID = os.getenv("CHAT_ID")
-BSC_CONTRACT = os.getenv("0xf0531343beef35366a4f08dcda8383d2f980edcb")
+BSC_CONTRACT = os.getenv("BSC_CONTRACT")
 
 # ✅ Validate API token
 if not API_TOKEN:
